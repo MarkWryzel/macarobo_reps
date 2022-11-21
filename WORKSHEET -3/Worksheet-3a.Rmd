@@ -1,0 +1,129 @@
+---
+title: "Worksheet-3a"
+author: "Mark Wryzel Macarobo BSIT-2A"
+date: "11/20/2022"
+output: pdf_document
+---
+
+1)
+
+a.
+```{r, include=TRUE}
+LETTERS[1:11]
+```
+
+b.
+```{r, include=TRUE}
+LETTERS[1:26 %% 2==1]
+```
+
+c.
+```{r, include=TRUE}
+vowel <- LETTERS[c(1,5,9,15,21)]
+vowel    
+
+```
+
+d.
+```{r, include=TRUE}
+letters[22:26]
+```
+
+e.
+```{r, include=TRUE}
+letters[15:24]
+```
+2)
+
+a.
+```{r, include=TRUE}
+city <- c("Tuguegarao City","Manila","Iloilo City","Tacloban","Samal Island","Davao City")
+city
+
+```
+
+b.
+```{r, include=TRUE}
+temp <- c(42,39,34,34,30,27)
+temp    
+
+```
+
+c.
+```{r, include=TRUE}
+names(temp) <- city
+temp 
+```
+
+d.
+```{r, include=TRUE}
+temp[5:6]
+```
+
+Matrix
+
+2)
+
+a.
+```{r, include=TRUE}
+num1 <- matrix(data = c(1:8,11:14),3,4)
+num1
+```
+
+b.
+```{r, include=TRUE}
+num1 * 2
+```
+
+c.
+```{r, include=TRUE}
+num1[2,]
+```
+
+d.
+```{r, include=TRUE}
+num1[c(1,2), c(3,4)]
+```
+
+e.
+```{r, include=TRUE}
+num1[c(3),c(2,3)]
+```
+
+f.
+```{r, include=TRUE}
+num1[,4]
+```
+
+g.
+```{r, include=TRUE}
+dimnames(num1) <- list(c("isa","dalawa","tatlo"), c("uno","dos","tres","quatro"))
+num1 
+```
+h.
+```{r, include=TRUE}
+dim(num1) <- c(6,2)
+num1 
+```
+3)
+
+a.
+
+```{r, include=TRUE}
+num2 <- c(1,2,3,6,7,8,9,0,3,4,5,1)
+threedimensional <- array(rep(num2,2), dim = c(2,4,3))    
+threedimensional
+```
+
+b.
+```{r, include=TRUE}
+dim(threedimensional)
+```
+
+c.
+```{r, include=TRUE}
+dimnames(threedimensional) <- list(letters[1:2], LETTERS[1:4], c("1st-Dimensional Array", 
+                                                                 "2nd-Dimentional Array",
+                                                                 "3rd-Dimensional Array"))
+
+```
