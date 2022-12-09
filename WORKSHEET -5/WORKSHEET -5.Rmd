@@ -1,0 +1,157 @@
+---
+title: "WORKSHEET -5"
+author: "Mark Wryzel Macarobo BSIT-2A"
+date: "12/6/2022"
+output: pdf_document
+---
+1.
+
+```{r , include=TRUE}
+stud <- data.frame("Course Year" = c ("1st", "2nd", "3rd", "4th"), " 2019–2020" = c(80, 75, 70, 60))
+stud
+```
+a.
+
+```{r , include=TRUE}
+a <- c("1st" = 80, "2nd" = 75, "3rd" = 70, "4th" = 60)
+barplot(a)
+```
+b.
+
+```{r , include=TRUE}
+a <- c("1st" = 80 , "2nd" = 75, "3rd" = 70, "4th" = 60)
+graph <- barplot(a, main = "Enrollment of BS Computer Science", xlab = "number of students", ylab = "Course Year", col = "blue")
+graph
+
+```
+2.
+
+a.
+```{r , include=TRUE}
+sv <- c("Food", "Electricity", "Savings", "Miscellaneous_expenses")
+mon <- c(60, 10, 5, 25)
+```
+
+```{r , include=TRUE}
+spend <- data.frame(sv, mon)
+spend
+```
+
+```{r , include=TRUE}
+tab <- table(spend)
+tab 
+```
+b.
+
+```{r , include=TRUE}
+mon = c( 60, 10, 5, 25)
+```
+
+```{r , include=TRUE}
+data <- round(mon/sum(mon)*100,1)
+data <- paste(data, "%", sep = " ")
+```
+
+```{r , include=TRUE}
+piechart <- pie( mon, labels = data, cex = 0.8, col = rainbow(4), main = "De Jesus family Monthly Expenses")
+legend("topright", c("Food", "Electricity", "Savings", "Miscellaneous"),
+       cex = 0.8 , fill =rainbow(4))
+```
+3.
+
+```{r , include=TRUE}
+data(mtcars)
+mt <- (mtcars$mpg)
+mt
+```
+
+```{r , include=TRUE}
+hist(mt, breaks=12)
+```
+b.
+
+```{r , include=TRUE}
+hist(mtcars$mpg, breaks=12, col="pink")
+
+```
+c.
+
+```{r , include=TRUE}
+x <- mtcars$mpg
+h<-hist(x, breaks=10, col="black", xlab="Miles Per Gallon",
+        main="Histogram with Normal Curve")
+xfit<-seq(min(x),max(x),length=40)
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+yfit <- yfit*diff(h$mids[1:2])*length(x)
+lines(xfit, yfit, col="red", lwd=2)
+```
+4.
+
+```{r , include=TRUE}
+data(iris)
+allspcs <- data.frame(iris)
+allspcs
+```
+
+```{r , include=TRUE}
+setosaDF <- data.frame(iris)
+setosaDF
+```
+
+```{r , include=TRUE}
+virginicaDF <- data.frame(iris)
+virginicaDF
+
+```
+
+```{r , include=TRUE}
+versicolorDF <- data.frame(iris)
+versicolorDF
+```
+
+```{r , include=TRUE}
+setosa <- subset(setosaDF, Species == 'setosa' )
+setosa
+```
+
+```{r , include=TRUE}
+versicolor <- subset(versicolorDF, Species == 'versicolor' )
+versicolor
+```
+
+```{r , include=TRUE}
+virginica <- subset(virginicaDF, Species == 'virginica' )
+virginica
+```
+b.
+
+```{r , include=TRUE}
+setosa1 <- colMeans(setosa[sapply(setosaDF,is.numeric)])
+setosa1
+```
+
+```{r , include=TRUE}
+virginica1 <- colMeans(virginica[sapply(virginicaDF,is.numeric)])
+virginica1
+```
+
+```{r , include=TRUE}
+versicolor1 <- colMeans(versicolor[sapply(versicolorDF,is.numeric)])
+versicolor1
+```
+
+```{r , include=TRUE}
+comb <- rbind( setosa1, versicolor1, virginica1)
+dfiris <- data.frame(comb)
+dfiris
+
+```
+d.
+
+```{r , include=TRUE}
+barplot(height = as.matrix(dfiris),main = "Iris Data",
+        ylab = "Mean Scores",
+        beside =T, col = rainbow(3) )
+```
+
+
