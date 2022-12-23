@@ -1,0 +1,147 @@
+---
+title: "WORKSHEET -6"
+author: "Mark Wryzel Macarobo BSIT-2A"
+date: "12/23/2022"
+output: pdf_document
+---
+
+library(ggplot2)
+data(mpg)
+as.data.frame(data(mpg))
+data(mpg)
+mpg
+
+str(mpg)
+library(dplyr)
+glimpse(mpg)
+
+1.
+```{r , include=TRUE}
+library(ggplot2)
+data(mpg)
+as.data.frame(data(mpg))
+
+library(dplyr)
+datampg <- glimpse(mpg)
+ncol(mpg)
+nrow(mpg)
+```
+
+2.
+```{r , include=TRUE}
+total <- mpg %>%
+  group_by(manufacturer) %>%
+  tally(sort = TRUE)
+```
+
+2.a
+```{r , include=TRUE}
+datampg <- glimpse(mpg)
+unique <- datampg %>% group_by(manufacturer, model) %>%
+  distinct() %>% count()
+unique
+
+colnames(unique) <- c("Manufacturer", "Model", "Counts")
+unique    
+```
+2.b
+
+```{r , include=TRUE}
+qplot(model, data = mpg, geom = "bar", fill = manufacturer)
+ggplot(mpg, aes(model, manufacturer)) + geom_point()
+
+```
+
+3.a
+```{r , include=TRUE}
+ggplot(mpg, aes(model, manufacturer)) + geom_point()
+```
+3.b
+```{r , include=TRUE}
+ggplot(mpg, aes(model, manufacturer)) + 
+  geom_point() +
+  geom_jitter()
+```
+
+4.
+```{r , include=TRUE}
+datampg <- unique %>% group_by(Model) %>% count()
+datampg    
+
+colnames(datampg) <- c("Model", "Counts")
+```
+
+4.a
+```{r , include=TRUE}
+qplot(model, data = mpg, main = "Number of Cars per model", xlab = "Model", 
+      ylab = "Number of Cars",
+      geom = "bar", fill = manufacturer) + coord_flip()
+```
+
+4.b
+```{r , include=TRUE}
+modelcars <- mpg %>%
+  group_by(model) %>%
+  tally(sort = TRUE)
+```
+
+5.a
+```{r , include=TRUE}
+ggplot(data = mpg, mapping = aes(x = displ, y = cyl, main = "Relationship between No of Cylinders and
+                                     Engine Displacement")) + geom_point(mapping = aes(colour = "engine
+                                                                                       displacement")) + geom_jitter()
+```
+
+5.b
+```{r , include=TRUE}
+#Answer: The graph is jittered. The pink horizontal dots are the engine displacements.
+```
+
+6.a
+```{r , include=TRUE}
+ggplot(data = mpg, mapping = aes(x = drv, y = class)) + geom_point(mapping=aes(color=class)) +
+  geom_tile()
+```
+
+6.b
+```{r , include=TRUE}
+#Answer: Areas that are black are mapped using the geometric point graph. y object is class and x object is drv.
+```
+
+7.
+```{r , include=TRUE}
+#Code#1
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, colour = "blue"))
+#Code#2
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy), colour = "blue")
+```
+
+8.
+```{r , include=TRUE}
+?mpg
+```
+
+8.a
+```{r , include=TRUE}
+#Answer: manufacturer, model, trans, drv, fl, and class.
+```
+
+8.b
+```{r , include=TRUE}
+#Answer: They are called double or integers.
+```
+
+8.c
+```{r , include=TRUE}
+ggplot(mpg, aes(x = displ, y = hwy, colour = cty)) + geom_point()
+
+```
+
+
+```{r , include=TRUE}
+ggplot(mpg, aes(x = displ, y = hwy, colour = cty)) + geom_point()
+#Answer: The data monitors the cty by placing the cty in different hues of color blue.
+```
+
