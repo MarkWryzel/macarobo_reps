@@ -31,10 +31,7 @@ qplot(model, data = mpg, geom = "bar", fill = manufacturer)
 ggplot(mpg, aes(model, manufacturer)) + geom_point()
 
 #3.
-datampg <- mpg
-relationship <- datampg %>% group_by(manufacturer, model) %>%
-  distinct() %>% count()
-relationship
+
 #3.a
 ggplot(mpg, aes(model, manufacturer)) + geom_point()
 #3.b
